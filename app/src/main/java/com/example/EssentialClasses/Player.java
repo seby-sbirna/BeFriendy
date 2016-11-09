@@ -1,5 +1,6 @@
 package com.example.EssentialClasses;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,18 +8,57 @@ import java.util.List;
  */
 
 public class Player {
-    private String firstName;
+    private String userId;
+    private String firstName;//i think we don't need that
     private String lastName;
+    private String userName;
     private String emailAddress;
     private List<Game> gameList;
     private boolean rememberCredentials;
     private List<Player> friendList;
     private PlayToken token;
+    private ArrayList<DatabaseUser> userList;
+
+    private static Player currPlayer;
+
+    //uses Singelton -> only 1 Player object possible;
+    public static Player get(){
+        if(currPlayer == null){
+            currPlayer = new Player();
+        }
+        return currPlayer;
+    }
+
+
+    public Player(){
+        userList = new ArrayList<DatabaseUser>();
+    }
+
 
     public Player(String firstName, String emailAddress) {
         this.firstName = firstName;
         this.emailAddress = emailAddress;
         this.token = PlayToken.DEFAULT_TOKEN;
+    }
+
+    public ArrayList<DatabaseUser> getUsers() {                         // get all Users
+        return userList;
+    }        // get all Users
+
+    public DatabaseUser getUser(String id) {                                    // get a User by ID
+        for (DatabaseUser u : userList) {
+            if (u.getUserId().equals(id))
+                return u;
+        }
+        return null;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
     }
 
     public String getName() {
@@ -37,6 +77,15 @@ public class Player {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
 
     public String getLastName() {
         return lastName;
