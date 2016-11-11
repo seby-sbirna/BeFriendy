@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     Button buttonCreateAcc;
     Button buttonForgotPass;
-    
+
     private DatabaseReference mDatabase;
     private static final String TAG = "AUTH";
     @Override
@@ -101,8 +101,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Fields Validation
                 if(typedEmail.isEmpty() || typedPassword.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please fill in both email and password!", Toast.LENGTH_LONG).show();
-                    // Some more statements to validate login attempt...
+                    //For testing purposes if the fields are empty it would log you with test@test.com
+                    typedEmail = "test@test.com";
+                    typedPassword = "test";
+                    SignInUser(typedEmail, typedPassword);
+                    Toast.makeText(getApplicationContext(), "Loged in with test@test.com", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Please fill in both email and password!", Toast.LENGTH_LONG).show();
+
                 } else if(!isValidEmail(typedEmail)){
                     Toast.makeText(getApplicationContext(), "The email is not valid!", Toast.LENGTH_LONG).show();
                 }/* else if (typedPassword.length() < 6) {
@@ -111,25 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "This password is too long", Toast.LENGTH_LONG).show();
                 } else {
                     //check if the user is registered or not
-                    boolean userExists = false;
-                    for (DatabaseUser currUser : Player.get().getUsers()) {
-                        if (typedEmail.equals(currUser.getEmail()) && typedPassword.equals(currUser.getPassword())) {
-                            Player.get().setUserId(currUser.getUserId());         // User initialized from database user-data
-                            Player.get().setUserName(currUser.getUserName());
-                            Player.get().setEmailAddress(currUser.getEmail());
-                            //Player.get().setPassword(currUser.getPassword());
-
-                            userExists = true;
-                            Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), GameListActivity.class);
-                            startActivity(intent);
-                            finish();
-                            break;
-                        }
-                    }
-                    if (!userExists) {
-                        Toast.makeText(getApplicationContext(), "Email or password incorrect", Toast.LENGTH_LONG).show();
-                    }
+                    SignInUser(typedEmail, typedPassword);
 
                 }
 
@@ -146,6 +133,28 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void SignInUser(String typedEmail, String typedPassword) {
+        boolean userExists = false;
+        for (DatabaseUser currUser : Player.get().getUsers()) {
+            if (typedEmail.equals(currUser.getEmail()) && typedPassword.equals(currUser.getPassword())) {
+                Player.get().setUserId(currUser.getUserId());         // User initialized from database user-data
+                Player.get().setUserName(currUser.getUserName());
+                Player.get().setEmailAddress(currUser.getEmail());
+                //Player.get().setPassword(currUser.getPassword());
+
+                userExists = true;
+                Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), GameListActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
+        }
+        if (!userExists) {
+            Toast.makeText(getApplicationContext(), "Email or password incorrect", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
