@@ -8,6 +8,10 @@ public abstract class Field {
     protected int id;
     protected Game game;
 
+    public Field(){
+
+    }
+
     public Field(int id, Game game) {
         this.id = id;
         this.game = game;
