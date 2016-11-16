@@ -3,14 +3,14 @@ package com.example.EssentialClasses;
 import com.example.R;
 
 /**
- * Created by XPS on 11/4/2016.
+ * Created by XPS on 11/13/2016.
  */
 
-public class Truth extends Field {
+public class Wildcard extends Field {
     private String question;
     private String answer;
 
-    public Truth(int id, int position) {
+    public Wildcard(int id, int position) {
         super(id, position);
     }
 
@@ -22,10 +22,6 @@ public class Truth extends Field {
     @Override
     public void visualize(String[] data) {
         //TODO
-    }
-
-    private void requestTruthFromDatabase() {
-
     }
 
     @Override
@@ -50,12 +46,13 @@ public class Truth extends Field {
         this.answer = answer;
     }
 
+    @Override
     public int getType() {
-        return 1;
+        return 5;
     }
 
+    @Override
     public int getDrawableId() {
-        return R.drawable.truth;
+        return R.drawable.wildcard;
     }
-
 }

@@ -9,14 +9,16 @@ import java.util.List;
 
 public class Player {
     private String userId;
-    private String firstName;//i think we don't need that
-    private String lastName;
     private String userName;
+    private String firstName;
+    private String lastName;
     private String emailAddress;
     private List<Game> gameList;
     private boolean rememberCredentials;
     private List<Player> friendList;
     private PlayToken token;
+
+
     private ArrayList<DatabaseUser> userList;
 
     private static Player currPlayer;
@@ -29,11 +31,9 @@ public class Player {
         return currPlayer;
     }
 
-
     public Player(){
         userList = new ArrayList<DatabaseUser>();
     }
-
 
     public Player(String firstName, String emailAddress) {
         this.firstName = firstName;
@@ -53,10 +53,6 @@ public class Player {
         return null;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
     public void setUserId(String userId){
         this.userId = userId;
     }
@@ -70,14 +66,6 @@ public class Player {
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -86,6 +74,13 @@ public class Player {
         this.userName = userName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     public String getLastName() {
         return lastName;

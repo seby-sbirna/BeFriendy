@@ -6,15 +6,15 @@ package com.example.EssentialClasses;
 
 public abstract class Field {
     protected int id;
-    protected Game game;
+    protected int position;
 
-    public Field(){
-
+    public Field(int id, int position) {
+        this.id = id;
+        this.position = position;
     }
 
-    public Field(int id, Game game) {
-        this.id = id;
-        this.game = game;
+    public int getPosition() {
+        return position;
     }
 
     protected static void closeField() {
@@ -26,4 +26,8 @@ public abstract class Field {
     public abstract void visualize(String[] data);
 
     public abstract boolean checkForNewDataInBackground(int id);
+
+    public abstract int getType();
+
+    public abstract int getDrawableId();
 }

@@ -1,11 +1,6 @@
 package com.example.EssentialClasses;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.R;
 
 /**
  * Created by XPS on 11/4/2016.
@@ -16,12 +11,11 @@ public class Dare extends Field {
     private Photo darePhoto;
     private Video dareVideo;
 
-    private DatabaseReference mDatabase;
+    //private DatabaseReference mDatabase;
 
-    public Dare(){}
 
-    public Dare(int id, Game game) {
-        super(id, game);
+    public Dare(int id, int position) {
+        super(id, position);
     }
 
     @Override
@@ -34,7 +28,8 @@ public class Dare extends Field {
         //TODO
     }
 
-    public void requestDareFromDatabase(int dareId) {
+    private void requestDareFromDatabase() {
+        /*
         //gets a question with a specific id from the database.
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -49,6 +44,7 @@ public class Dare extends Field {
 
             }
         });
+        */
     }
 
     @Override
@@ -79,5 +75,13 @@ public class Dare extends Field {
 
     private Video receiveVideo(String[] data) {
         return dareVideo; //VIDEO
+    }
+
+    public int getType() {
+        return 2;
+    }
+
+    public int getDrawableId() {
+        return R.drawable.dare;
     }
 }

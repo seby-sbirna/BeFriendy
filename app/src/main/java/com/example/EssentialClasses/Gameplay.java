@@ -1,14 +1,16 @@
 package com.example.EssentialClasses;
 
+import com.example.R;
+
 /**
  * Created by XPS on 11/4/2016.
  */
 
-public class Magic extends Field {
+public class Gameplay extends Field {
     private String magicText;
 
-    public Magic(int id, Game game) {
-        super(id, game);
+    public Gameplay(int id, int position) {
+        super(id, position);
     }
 
     @Override
@@ -33,5 +35,13 @@ public class Magic extends Field {
 
     public void setMagicText(String magicText) {
         this.magicText = magicText;
+    }
+
+    public int getType() {
+        return 3;
+    }
+
+    public int getDrawableId() {
+        return R.drawable.gameplay;
     }
 }

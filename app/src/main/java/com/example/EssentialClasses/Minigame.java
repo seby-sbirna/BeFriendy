@@ -1,5 +1,7 @@
 package com.example.EssentialClasses;
 
+import com.example.R;
+
 /**
  * Created by XPS on 11/4/2016.
  */
@@ -8,8 +10,8 @@ public class Minigame extends Field {
     private String minigameText;
     private String answer;
 
-    public Minigame(int id, Game game) {
-        super(id, game);
+    public Minigame(int id, int position) {
+        super(id, position);
     }
 
     @Override
@@ -46,5 +48,13 @@ public class Minigame extends Field {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public int getType() {
+        return 4;
+    }
+
+    public int getDrawableId() {
+        return R.drawable.minigame;
     }
 }
