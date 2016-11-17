@@ -7,6 +7,8 @@ import java.util.List;
  * Created by XPS on 11/3/2016.
  */
 
+
+// THIS IS ME :3
 public class Board {
     private int localPlayerPosition;
     private int remotePlayerPosition;
