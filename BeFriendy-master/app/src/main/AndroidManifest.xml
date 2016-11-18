@@ -3,35 +3,40 @@
     package="com.example">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.media.action.IMAGE_CAPTURE"/>
 
-    <uses-feature android:name="android.hardware.camera2"/>
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
     <application
-        android:name=".BeFriendy"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            android:label="@string/title_activity_main_screen"
-            android:theme="@style/AppTheme.NoActionBar"
         </activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".GameListActivity" />
-        <activity android:name=".DareActivity"
+        <activity android:name=".BoardActivity">
+            android:label="@string/title_activity_main_screen"
+            android:theme="@style/AppTheme.NoActionBar"
+        </activity>
+        <activity
+            android:name=".TruthActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".DareActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity android:name=".WildcardActivity"
             android:theme="@style/Theme.AppCompat.Dialog.Alert"/>
-        <activity android:name=".TruthActivity" />
-        <activity android:name=".WildcardActivity"></activity>
+        <activity android:name=".MiniGameActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
     </application>
 
 </manifest>

@@ -36,21 +36,20 @@ public class TruthActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String writtenAnswer = truthAnswer.getText().toString();
-
                 if(writtenAnswer.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please write an answer!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please type an answer before submitting!", Toast.LENGTH_LONG).show();
                 } else {
-                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                    // Code to submit answer
+                    Intent i = new Intent(getApplicationContext(), BoardActivity.class);
                     startActivity(i);
                 }
-
             }
         });
 
         declineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ii = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent ii = new Intent(getApplicationContext(), BoardActivity.class);
                 startActivity(ii);
             }
         });

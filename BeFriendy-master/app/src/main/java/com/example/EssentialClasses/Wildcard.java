@@ -3,14 +3,14 @@ package com.example.EssentialClasses;
 import com.example.R;
 
 /**
- * Created by XPS on 11/4/2016.
+ * Created by XPS on 11/13/2016.
  */
 
-public class Minigame extends Field {
-    private String minigameText;
+public class Wildcard extends Field {
+    private String question;
     private String answer;
 
-    public Minigame(int id, int position) {
+    public Wildcard(int id, int position) {
         super(id, position);
     }
 
@@ -24,22 +24,18 @@ public class Minigame extends Field {
         //TODO
     }
 
-    private void requestMinigameFromDatabase() {
-        //TODO
-    }
-
     @Override
     public boolean checkForNewDataInBackground(int id) {
         //TODO
         return false; //DELETE
     }
 
-    public String getMinigameText() {
-        return minigameText;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setMinigameText(String minigameText) {
-        this.minigameText = minigameText;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public String getAnswer() {
@@ -50,11 +46,13 @@ public class Minigame extends Field {
         this.answer = answer;
     }
 
+    @Override
     public int getType() {
-        return 4;
+        return 5;
     }
 
+    @Override
     public int getDrawableId() {
-        return R.drawable.minigame;
+        return R.drawable.wildcard;
     }
 }
