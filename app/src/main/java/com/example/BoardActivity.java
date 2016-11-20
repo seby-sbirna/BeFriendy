@@ -36,7 +36,7 @@ public class BoardActivity extends AppCompatActivity {
         //TODO CHANGE HERE
         Player player1 = new Player("Sebastian", "sebastian@befirendy.com");
         Player player2 = new Player("Michal", "michal@befirendy.com");
-        this.game = new Game(1, player1, player2);
+        this.game = new Game(player2);
         populateFieldViews();
     }
 

@@ -139,11 +139,14 @@ public class Player {
         this.token.setColor(colourId);
     }
 
+    //Hristo: i don't think this should be here
+    /*
     public Game newGame(String remotePlayerName, String remotePlayerEmailAddress) {
         Game g =  new Game(gameList.size(), this,  new Player(remotePlayerName, remotePlayerEmailAddress));
         gameList.add(g);
         return g;
     }
+    */
 
     public void inviteFriend(String friendEmailAddress){
         //TODO !!!
@@ -160,5 +163,9 @@ public class Player {
 
     public void showAchievements() {
         //TODO !!!
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

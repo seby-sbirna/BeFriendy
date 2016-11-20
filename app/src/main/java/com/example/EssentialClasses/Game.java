@@ -1,21 +1,40 @@
 package com.example.EssentialClasses;
 
+import android.provider.ContactsContract;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
 /**
  * Created by XPS on 11/3/2016.
  */
 
 public class Game {
-    private int id;
+    private String id;
     private Board board;
     private Player localPlayer;
     private Player remotePlayer;
     private boolean isTurnEnded;
+    private DatabaseReference mDatabase;
 
-    public Game(int id, Player localPlayer, Player remotePlayer) {
-        this.id = id;
-        this.localPlayer = localPlayer;
+    private ArrayList<Integer> boardFieldInts;
+
+    public Game( Player remotePlayer) {
+        //TODO check if the 2 players don't have a game already
+        //also remotePlayer != localPlayer
+        this.id = UUID.randomUUID().toString();
+        this.localPlayer = Player.get();
         this.remotePlayer = remotePlayer;
         createBoard();
+
+        DatabaseGame newGame = new DatabaseGame(id, Player.get().getUserId(), remotePlayer.getUserId(), board.getListFieldInts());
+
+        //TODO save game to localPlayer and remotePlayer
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("games").child(id).setValue(newGame);
     }
 
 
@@ -32,34 +51,76 @@ public class Game {
     private void createBoard() {
         //TODO CHANGE HERE
         this.board = new Board();
-        board.addField(new Minigame(1, 1));
-        board.addField(new Truth(2, 2));
-        board.addField(new Dare(3, 3));
-        board.addField(new Minigame(4, 4));
-        board.addField(new Truth(5, 5));
-        board.addField(new Dare(6, 6));
-        board.addField(new Truth(7, 7));
-        board.addField(new Dare(8, 8));
-        board.addField(new Wildcard(9, 9));
-        board.addField(new Dare(10, 10));
-        board.addField(new Gameplay(11, 11));
-        board.addField(new Dare(12, 12));
-        board.addField(new Truth(13, 13));
-        board.addField(new Minigame(14, 14));
-        board.addField(new Dare(15, 15));
-        board.addField(new Gameplay(16, 16));
-        board.addField(new Wildcard(17, 17));
-        board.addField(new Truth(18, 18));
-        board.addField(new Dare(19, 19));
-        board.addField(new Truth(20, 20));
-        board.addField(new Wildcard(21, 21));
-        board.addField(new Minigame(22, 22));
-        board.addField(new Dare(23, 23));
-        board.addField(new Gameplay(24, 24));
-        board.addField(new Truth(25, 25));
-        board.addField(new Wildcard(26, 26));
-        board.addField(new Dare(27, 27));
-        board.addField(new Truth(28, 28));
-        board.addField(new Wildcard(29, 29));
+        board.addField(new Minigame(1, 1)); //3
+        board.addField(new Truth(2, 2)); //1
+        board.addField(new Dare(3, 3));//2
+        board.addField(new Minigame(4, 4));//3
+        board.addField(new Truth(5, 5));//1
+        board.addField(new Dare(6, 6));//2
+        board.addField(new Truth(7, 7));//1
+        board.addField(new Dare(8, 8));//2
+        board.addField(new Wildcard(9, 9));//4
+        board.addField(new Dare(10, 10));//2
+        board.addField(new Gameplay(11, 11));//5
+        board.addField(new Dare(12, 12));//2
+        board.addField(new Truth(13, 13));//1
+        board.addField(new Minigame(14, 14));//3
+        board.addField(new Dare(15, 15));//2
+        board.addField(new Gameplay(16, 16));//5
+        board.addField(new Wildcard(17, 17));//4
+        board.addField(new Truth(18, 18));//1
+        board.addField(new Dare(19, 19));//2
+        board.addField(new Truth(20, 20));//1
+        board.addField(new Wildcard(21, 21));//4
+        board.addField(new Minigame(22, 22));//3
+        board.addField(new Dare(23, 23));//2
+        board.addField(new Gameplay(24, 24));//5
+        board.addField(new Truth(25, 25));//1
+        board.addField(new Wildcard(26, 26));//4
+        board.addField(new Dare(27, 27));//2
+        board.addField(new Truth(28, 28));//1
+        board.addField(new Wildcard(29, 29));//4
+
+        //LEGEND:
+        /*
+        Truth: 1
+        Dare: 2
+        Minigame: 3
+        Wildcard: 4
+        Gameplay: 5
+         */
+        /*
+        implemented a smarter way in the board class but keep it here just in case
+        boardFieldInts = new ArrayList<>();
+        boardFieldInts.add(3);
+        boardFieldInts.add(1);
+        boardFieldInts.add(2);
+        boardFieldInts.add(3);
+        boardFieldInts.add(1);
+        boardFieldInts.add(2);
+        boardFieldInts.add(1);
+        boardFieldInts.add(2);
+        boardFieldInts.add(4);
+        boardFieldInts.add(2);
+        boardFieldInts.add(5);
+        boardFieldInts.add(2);
+        boardFieldInts.add(1);
+        boardFieldInts.add(3);
+        boardFieldInts.add(2);
+        boardFieldInts.add(5);
+        boardFieldInts.add(4);
+        boardFieldInts.add(1);
+        boardFieldInts.add(2);
+        boardFieldInts.add(1);
+        boardFieldInts.add(4);
+        boardFieldInts.add(3);
+        boardFieldInts.add(2);
+        boardFieldInts.add(5);
+        boardFieldInts.add(1);
+        boardFieldInts.add(4);
+        boardFieldInts.add(2);
+        boardFieldInts.add(1);
+        boardFieldInts.add(4);
+        */
     }
 }

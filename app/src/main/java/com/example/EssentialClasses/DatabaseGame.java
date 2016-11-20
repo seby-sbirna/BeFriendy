@@ -1,7 +1,12 @@
 package com.example.EssentialClasses;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by k0r on 16-Nov-16.
@@ -28,12 +33,31 @@ public class DatabaseGame {
     private String gameId;
     private String player1Id;
     private String player2Id;
-    private String player1Position;
-    private String player2Position;
-    private ArrayList<Integer> boardFields;
+    private int player1Position;
+    private int player2Position;
+    private List<Integer> boardFields;
     private boolean isPlayer1Turn;
     private ArrayList<String> usedTruthsId;
     private ArrayList<String> usedDaresId;
+
+    public DatabaseGame (){
+        //empty constructor for firebase
+    }
+
+    public DatabaseGame (String gameId, String player1Id, String player2Id, List<Integer> boardFields){
+        this.gameId = gameId;
+        this.player1Id = player1Id;
+        this.player2Id = player2Id;
+        this.player1Position = 0;
+        this.player2Position = 0;
+        this.boardFields = boardFields;
+        this.isPlayer1Turn = true;
+        this.usedTruthsId = new ArrayList<>();
+        this.usedDaresId =new ArrayList<>();
+
+        //when a new Game is created it should be saved in the database
+
+    }
 
     public String getGameId() {
         return gameId;
@@ -59,27 +83,27 @@ public class DatabaseGame {
         this.player2Id = player2Id;
     }
 
-    public String getPlayer1Position() {
+    public int getPlayer1Position() {
         return player1Position;
     }
 
-    public void setPlayer1Position(String player1Position) {
+    public void setPlayer1Position(int player1Position) {
         this.player1Position = player1Position;
     }
 
-    public String getPlayer2Position() {
+    public int getPlayer2Position() {
         return player2Position;
     }
 
-    public void setPlayer2Position(String player2Position) {
+    public void setPlayer2Position(int player2Position) {
         this.player2Position = player2Position;
     }
 
-    public ArrayList<Integer> getBoardFields() {
+    public List<Integer> getBoardFields() {
         return boardFields;
     }
 
-    public void setBoardFields(ArrayList<Integer> boardFields) {
+    public void setBoardFields(List<Integer> boardFields) {
         this.boardFields = boardFields;
     }
 
@@ -107,6 +131,7 @@ public class DatabaseGame {
         this.usedDaresId = usedDaresId;
     }
     //TODO: save information for the last round
+
 
 
 

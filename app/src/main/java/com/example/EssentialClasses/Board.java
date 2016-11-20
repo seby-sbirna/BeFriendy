@@ -17,6 +17,7 @@ public class Board {
     private boolean yourTurn;
 
     private List<Field> fields =new ArrayList<>();
+    private List<Integer> fieldsInt = new ArrayList<>();
 
     public Board() {
         localPlayerPosition = 0;
@@ -25,6 +26,43 @@ public class Board {
 
     public void addField(Field field) {
         fields.add(field);
+
+        //LEGEND:
+        /*
+        Truth: 1
+        Dare: 2
+        Minigame: 3
+        Wildcard: 4
+        Gameplay: 5
+         */
+        String fieldName = field.getClass().getName();
+        switch (field.getClass().getName()){
+            case "com.example.EssentialClasses.Truth":
+                fieldsInt.add(1);
+                break;
+            case "com.example.EssentialClasses.Dare":
+                fieldsInt.add(2);
+                break;
+            case "com.example.EssentialClasses.Gameplay":
+                fieldsInt.add(5);
+                break;
+            case "com.example.EssentialClasses.Minigame":
+                fieldsInt.add(3);
+                break;
+            case "com.example.EssentialClasses.Wildcard":
+                fieldsInt.add(4);
+                break;
+            default:
+                //unknown field
+                fieldsInt.add(-1);
+                break;
+
+        }
+
+    }
+
+    public List<Integer> getListFieldInts(){
+        return fieldsInt;
     }
 
     public Field getFieldByPosition(int position) {

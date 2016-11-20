@@ -29,6 +29,7 @@ public class Gameplay extends Field {
         return false; //DELETE
     }
 
+    //TODO CHANGE THIS NAMES! No magic
     public String getMagicText() {
         return magicText;
     }

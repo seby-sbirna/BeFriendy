@@ -103,6 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                     //check if the user is registered or not
                     SignInUser(typedEmail, typedPassword);
 
+
+
                 }
             }
         });
