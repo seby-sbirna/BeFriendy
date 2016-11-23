@@ -2,6 +2,8 @@ package com.example.EssentialClasses;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by XPS on 11/3/2016.
@@ -13,10 +15,11 @@ public class Player {
     private String firstName;
     private String lastName;
     private String emailAddress;
-    private List<Game> gameList;
+    private List<DatabaseGame> gameList;
     private boolean rememberCredentials;
     private List<Player> friendList;
     private PlayToken token;
+    private Map<String, String> usergameListIds;
 
 
     private ArrayList<DatabaseUser> userList;
@@ -33,12 +36,14 @@ public class Player {
 
     public Player(){
         userList = new ArrayList<DatabaseUser>();
+        gameList = new ArrayList<DatabaseGame>();
     }
 
     public Player(String firstName, String emailAddress) {
         this.firstName = firstName;
         this.emailAddress = emailAddress;
         this.token = PlayToken.DEFAULT_TOKEN;
+        this.userId = UUID.randomUUID().toString();
     }
 
     public ArrayList<DatabaseUser> getUsers() {                         // get all Users
@@ -98,11 +103,11 @@ public class Player {
         this.emailAddress = emailAddress;
     }
 
-    public List<Game> retrieveGameList() {
+    public List<DatabaseGame> getGameList() {
         return gameList;
     }
 
-    public void addGameToGameList(Game game) {
+    public void addGameToGameList(DatabaseGame game) {
         this.gameList.add(game);
     }
 
@@ -167,5 +172,13 @@ public class Player {
 
     public String getUserId() {
         return userId;
+    }
+
+    public Map<String, String> getUsergameListIds() {
+        return usergameListIds;
+    }
+
+    public void setUsergameListIds(Map<String, String> usergameListIds) {
+        this.usergameListIds = usergameListIds;
     }
 }

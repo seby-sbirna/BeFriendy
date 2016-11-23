@@ -57,7 +57,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
                 DatabaseUser user = snapshot.getValue(DatabaseUser.class); //this is how you parse information from firebase
 
-                Player.get().getUsers().add(user);                 // add registered user in Reg.Users list
+                boolean userAlreadyAdded = Player.get().getUser(user.getUserId()) != null;
+                if(!userAlreadyAdded) {
+                    Player.get().getUsers().add(user);                 // add registered user in Reg.Users list
+                }
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -129,7 +132,12 @@ public class LoginActivity extends AppCompatActivity {
                 Player.get().setUserId(currUser.getUserId());         // User initialized from database user-data
                 Player.get().setUserName(currUser.getUserName());
                 Player.get().setEmailAddress(currUser.getEmail());
+                Player.get().setUsergameListIds(currUser.getUserGames());
                 //Player.get().setPassword(currUser.getPassword());
+
+
+                //START SERVICE FOR GAME INFO AND USER INFO
+                startService(new Intent(getApplicationContext(), RetrieveInfoFromDatabase.class));
 
                 userExists = true;
                 Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();

@@ -2,11 +2,14 @@ package com.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.EssentialClasses.DatabaseUser;
 import com.example.EssentialClasses.Game;
 import com.example.EssentialClasses.Player;
 
+import java.io.Console;
 import java.util.List;
 
 import butterknife.BindViews;
@@ -14,6 +17,7 @@ import butterknife.ButterKnife;
 
 public class BoardActivity extends AppCompatActivity {
     private Game game;
+    private static final String TAG = "Service";
 
     @BindViews({R.id.field_1, R.id.field_2, R.id.field_3, R.id.field_4,
                 R.id.field_5, R.id.field_6, R.id.field_7, R.id.field_8, R.id.field_9,
@@ -34,9 +38,9 @@ public class BoardActivity extends AppCompatActivity {
 
     private void initializeGame() {
         //TODO CHANGE HERE
-        Player player1 = new Player("Sebastian", "sebastian@befirendy.com");
-        Player player2 = new Player("Michal", "michal@befirendy.com");
-        this.game = new Game(player2);
+        DatabaseUser remotePlayer = Player.get().getUsers().get(1); //just gets a player for testing purposes
+
+        this.game = new Game(remotePlayer);
         populateFieldViews();
     }
 

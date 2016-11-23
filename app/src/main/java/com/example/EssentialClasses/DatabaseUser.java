@@ -2,6 +2,9 @@ package com.example.EssentialClasses;
 
 import android.provider.ContactsContract;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by k0r on 09-Nov-16.
  */
@@ -12,6 +15,7 @@ public class DatabaseUser {
     private String email;
     private String password;
     private String userId;
+    private Map<String, String> userGames; //first string = game id, second string = player 2 id
 
     public DatabaseUser(){
         //empty default constructor for Firebase;
@@ -48,5 +52,11 @@ public class DatabaseUser {
         this.email = email;
     }
 
+    public Map<String, String> getUserGames() {
+        return userGames;
+    }
 
+    public void setUserGames(Map<String, String> userGames) {
+        this.userGames = userGames;
+    }
 }

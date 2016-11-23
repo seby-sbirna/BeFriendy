@@ -16,13 +16,13 @@ public class Game {
     private String id;
     private Board board;
     private Player localPlayer;
-    private Player remotePlayer;
+    private DatabaseUser remotePlayer;
     private boolean isTurnEnded;
     private DatabaseReference mDatabase;
 
     private ArrayList<Integer> boardFieldInts;
 
-    public Game( Player remotePlayer) {
+    public Game( DatabaseUser remotePlayer) { //Was Player, but changed to DatabaseUser
         //TODO check if the 2 players don't have a game already
         //also remotePlayer != localPlayer
         this.id = UUID.randomUUID().toString();
@@ -32,9 +32,12 @@ public class Game {
 
         DatabaseGame newGame = new DatabaseGame(id, Player.get().getUserId(), remotePlayer.getUserId(), board.getListFieldInts());
 
-        //TODO save game to localPlayer and remotePlayer
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("games").child(id).setValue(newGame);
+        //for each game save the game id to both players and the other player's id, so we know who plays with whom.
+        mDatabase.child("users").child(localPlayer.getUserId()).child("userGames").child(id).setValue(remotePlayer.getUserId());
+        mDatabase.child("users").child(remotePlayer.getUserId()).child("userGames").child(id).setValue(localPlayer.getUserId());
+
     }
 
 

@@ -33,10 +33,17 @@
         <activity
             android:name=".DareActivity"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
-        <activity android:name=".WildcardActivity"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"/>
-        <activity android:name=".MiniGameActivity"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
+        <activity
+            android:name=".WildcardActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".MiniGameActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+
+        <service
+            android:name=".RetrieveInfoFromDatabase"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
