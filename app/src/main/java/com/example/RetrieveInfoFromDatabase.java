@@ -3,7 +3,6 @@ package com.example;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.example.EssentialClasses.DatabaseGame;
@@ -112,8 +111,8 @@ public class RetrieveInfoFromDatabase extends Service {
                     if (pair.getKey().equals(game.getGameId()) ) {
                         //adds only the current player games
                         Player.get().addGameToGameList(game);                 // add game to the player
-                        Log.d(TAG, "There are " + gameCount + " games now");
                         gameCount++;
+                        Log.d(TAG, "There are " + gameCount + " games now");
                         break;
                     }
                     //it.remove(); // avoids a ConcurrentModificationException

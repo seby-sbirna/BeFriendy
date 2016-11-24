@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".GameListActivity" />
-        <activity android:name=".BoardActivity">
+        <activity android:name=".GameActivity">
             android:label="@string/title_activity_main_screen"
             android:theme="@style/AppTheme.NoActionBar"
         </activity>

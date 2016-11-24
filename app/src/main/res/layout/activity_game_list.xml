@@ -28,7 +28,7 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_add_black_24dp"
             android:id="@+id/floatingActionButton"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"nmffddfdfdfdfdfddff
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
@@ -39,7 +39,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:padding="16dp"
-            android:id="@+id/game_list_recycler_view"
+            android:id="@+id/game_list"
             android:scrollbars="vertical"
             android:orientation="vertical"
             android:layout_width="match_parent"

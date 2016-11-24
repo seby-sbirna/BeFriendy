@@ -1,6 +1,7 @@
 package com.example.EssentialClasses;
 
-import android.provider.ContactsContract;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -12,17 +13,18 @@ import java.util.UUID;
  * Created by XPS on 11/3/2016.
  */
 
-public class Game {
+public class Game implements Parcelable {
     private String id;
     private Board board;
     private Player localPlayer;
     private DatabaseUser remotePlayer;
     private boolean isTurnEnded;
     private DatabaseReference mDatabase;
+    private DatabaseGame databaseGame;
 
     private ArrayList<Integer> boardFieldInts;
 
-    public Game( DatabaseUser remotePlayer) { //Was Player, but changed to DatabaseUser
+    public Game(DatabaseUser remotePlayer) { //Was Player, but changed to DatabaseUser
         //TODO check if the 2 players don't have a game already
         //also remotePlayer != localPlayer
         this.id = UUID.randomUUID().toString();
@@ -30,16 +32,15 @@ public class Game {
         this.remotePlayer = remotePlayer;
         createBoard();
 
-        DatabaseGame newGame = new DatabaseGame(id, Player.get().getUserId(), remotePlayer.getUserId(), board.getListFieldInts());
+        databaseGame = new DatabaseGame(id, Player.get().getUserId(), remotePlayer.getUserId(), board.getListFieldInts());
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("games").child(id).setValue(newGame);
+        mDatabase.child("games").child(id).setValue(databaseGame);
         //for each game save the game id to both players and the other player's id, so we know who plays with whom.
         mDatabase.child("users").child(localPlayer.getUserId()).child("userGames").child(id).setValue(remotePlayer.getUserId());
         mDatabase.child("users").child(remotePlayer.getUserId()).child("userGames").child(id).setValue(localPlayer.getUserId());
 
     }
-
 
 
     private int play() {
@@ -126,4 +127,38 @@ public class Game {
         boardFieldInts.add(4);
         */
     }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(databaseGame.getGameId());
+    }
+
+    // Parcelling part
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Game createFromParcel(Parcel in) {
+            return new Game(in);
+        }
+
+        public Game[] newArray(int size) {
+            return new Game[size];
+        }
+    };
+
+    /** recreate object from parcel */
+    public Game(Parcel in){
+        String retrievedGameId = in.readString();
+        //TODO Here the game data should be taken from the database and the game should be reconstructed
+    }
+
+
 }

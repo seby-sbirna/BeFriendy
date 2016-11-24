@@ -40,7 +40,7 @@ public class TruthActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please type an answer before submitting!", Toast.LENGTH_LONG).show();
                 } else {
                     // Code to submit answer
-                    Intent i = new Intent(getApplicationContext(), BoardActivity.class);
+                    Intent i = new Intent(getApplicationContext(), GameActivity.class);
                     startActivity(i);
                 }
             }
@@ -49,7 +49,7 @@ public class TruthActivity extends AppCompatActivity {
         declineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ii = new Intent(getApplicationContext(), BoardActivity.class);
+                Intent ii = new Intent(getApplicationContext(), GameActivity.class);
                 startActivity(ii);
             }
         });

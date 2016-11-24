@@ -1,12 +1,7 @@
 package com.example.EssentialClasses;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Exclude;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by k0r on 16-Nov-16.
@@ -25,10 +20,10 @@ public class DatabaseGame {
 
     there should be a method when a game is created that should save all that info in the database
     there should be a method when each player plays their turn, it should update the info in the database,
-    updating info in the database would automaticaly fire the event in the service for the other player and also for the current one,
+    updating info in the database would automatically fire the event in the service for the other player and also for the current one,
     this is why we have the boolean to check whose turn it is, then different shit should happen
 
-    at a later stage we need to think about saving and retriving truths and dares player answers
+    at a later stage we need to think about saving and retrieving truths and dares player answers
      */
     private String gameId;
     private String player1Id;

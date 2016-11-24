@@ -2,20 +2,18 @@ package com.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.EssentialClasses.DatabaseUser;
 import com.example.EssentialClasses.Game;
 import com.example.EssentialClasses.Player;
 
-import java.io.Console;
 import java.util.List;
 
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 
-public class BoardActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
     private Game game;
     private static final String TAG = "Service";
 
@@ -24,7 +22,7 @@ public class BoardActivity extends AppCompatActivity {
                 R.id.field_10, R.id.field_11, R.id.field_12, R.id.field_13, R.id.field_14,
                 R.id.field_15, R.id.field_16, R.id.field_17, R.id.field_18, R.id.field_19,
                 R.id.field_20, R.id.field_21, R.id.field_22, R.id.field_23, R.id.field_24,
-                R.id.field_25, R.id.field_26, R.id.field_27, R.id.field_28, R.id.field_29}) //TODO CHANGE HERE
+                R.id.field_25, R.id.field_26, R.id.field_27, R.id.field_28, R.id.field_29})
     protected List<ImageView> fields;
 
     @Override
@@ -34,6 +32,24 @@ public class BoardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initializeGame();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+
+        // Save the user's current game state
+        savedInstanceState.putParcelable("Game", game);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Restore state members from saved instance
+        game = savedInstanceState.getParcelable("Game");
     }
 
     private void initializeGame() {

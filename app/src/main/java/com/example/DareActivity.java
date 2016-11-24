@@ -39,7 +39,7 @@ public class DareActivity extends AppCompatActivity {
         declineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), BoardActivity.class);
+                Intent i = new Intent(getApplicationContext(), GameActivity.class);
                 startActivity(i);
             }
         });

@@ -141,7 +141,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 userExists = true;
                 Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), BoardActivity.class); //GameListActivity
+                //Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GameListActivity.class);
                 startActivity(intent);
                 finish();
                 break;

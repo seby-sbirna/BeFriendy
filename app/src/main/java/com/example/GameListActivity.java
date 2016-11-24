@@ -10,10 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
-import com.example.EssentialClasses.Photo;
-
-import java.util.List;
-
 public class GameListActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
@@ -22,7 +18,6 @@ public class GameListActivity extends AppCompatActivity {
     private RecyclerView gameListRecyclerView;
     private LinearLayoutManager gameListLayoutManager;
     private GameListRecyclerViewAdapter gameListRecyclerViewAdapter;
-    private List<Photo> playerPhotoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +31,9 @@ public class GameListActivity extends AppCompatActivity {
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        gameListRecyclerView = (RecyclerView) findViewById(R.id.game_list_recycler_view);
+        gameListRecyclerView = (RecyclerView) findViewById(R.id.game_list);
         gameListLayoutManager = new LinearLayoutManager(this);
-        gameListRecyclerViewAdapter = new GameListRecyclerViewAdapter(playerPhotoList, this);
+        gameListRecyclerViewAdapter = new GameListRecyclerViewAdapter(this);
 
         gameListRecyclerView.setLayoutManager(gameListLayoutManager);
         gameListRecyclerView.setItemAnimator(new DefaultItemAnimator());

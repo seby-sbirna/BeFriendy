@@ -1,5 +1,7 @@
 package com.example.EssentialClasses;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +106,7 @@ public class Player {
     }
 
     public List<DatabaseGame> getGameList() {
+        Log.d("Player", "There are " + gameList.size() + " games in the gameList");
         return gameList;
     }
 
