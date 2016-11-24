@@ -28,7 +28,7 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_add_black_24dp"
             android:id="@+id/floatingActionButton"
-            app:layout_constraintBottom_toBottomOf="parent"nmffddfdfdfdfdfddff
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
