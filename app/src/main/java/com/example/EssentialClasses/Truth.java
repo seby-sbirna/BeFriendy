@@ -1,11 +1,7 @@
 package com.example.EssentialClasses;
 
 import com.example.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by XPS on 11/4/2016.
@@ -17,8 +13,8 @@ public class Truth extends Field {
 
     private DatabaseReference mDatabase;
 
-    public Truth(int id, int position) {
-        super(id, position);
+    public Truth(int position) {
+        super(position);
     }
 
     @Override
@@ -31,15 +27,20 @@ public class Truth extends Field {
         //TODO
     }
 
-    private void requestTruthFromDatabase(int truthId) {
-        //gets a question with a specific id from the database.
+    /*
+    public void requestTruthQuestionFromDatabase() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("Truth").child(String.valueOf(truthId)).child("question").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                question = String.valueOf(snapshot.getValue());
+        Random rng = new Random();
+        int randomTruthIdResult = rng.nextInt((int) Player.get().getTotalTruthCount()) + 1;
 
+        mDatabase.child("Truth").child(String.valueOf(randomTruthIdResult)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    return;
+                }
+                question = String.valueOf(dataSnapshot.getValue());
             }
 
             @Override
@@ -47,14 +48,27 @@ public class Truth extends Field {
 
             }
         });
-
     }
 
-    @Override
-    public boolean checkForNewDataInBackground(int id) {
-        //TODO
-        return false; //DELETE
-    }
+    public void requestTruthQuestionFromDatabaseById(int truthId) {
+        //gets a question with a specific id from the database.
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("Truth").child(String.valueOf(truthId)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    return;
+                }
+                question = String.valueOf(dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    } */
 
     public String getQuestion() {
         return question;

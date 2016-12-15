@@ -10,8 +10,8 @@ public class Wildcard extends Field {
     private String question;
     private String answer;
 
-    public Wildcard(int id, int position) {
-        super(id, position);
+    public Wildcard(int position) {
+        super(position);
     }
 
     @Override
@@ -22,12 +22,6 @@ public class Wildcard extends Field {
     @Override
     public void visualize(String[] data) {
         //TODO
-    }
-
-    @Override
-    public boolean checkForNewDataInBackground(int id) {
-        //TODO
-        return false; //DELETE
     }
 
     public String getQuestion() {
@@ -48,7 +42,7 @@ public class Wildcard extends Field {
 
     @Override
     public int getType() {
-        return 5;
+        return 4;
     }
 
     @Override

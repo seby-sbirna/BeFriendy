@@ -1,7 +1,6 @@
 package com.example.EssentialClasses;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.content.Context;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,39 +12,108 @@ import java.util.UUID;
  * Created by XPS on 11/3/2016.
  */
 
-public class Game implements Parcelable {
+public class Game {
+    private Context context;
     private String id;
     private Board board;
     private Player localPlayer;
     private DatabaseUser remotePlayer;
-    private boolean isTurnEnded;
     private DatabaseReference mDatabase;
     private DatabaseGame databaseGame;
 
     private ArrayList<Integer> boardFieldInts;
 
-    public Game(DatabaseUser remotePlayer) { //Was Player, but changed to DatabaseUser
+    public Game(DatabaseUser remotePlayer, Context context) { //Was Player, but changed to DatabaseUser
         //TODO check if the 2 players don't have a game already
         //also remotePlayer != localPlayer
-        this.id = UUID.randomUUID().toString();
+
+        this.context = context;
         this.localPlayer = Player.get();
         this.remotePlayer = remotePlayer;
+
         createBoard();
+        initializeGameToDatabase();
+    }
+
+    public Game(DatabaseUser remotePlayer, String id, Context context) { //Was Player, but changed to DatabaseUser
+        //TODO check if the 2 players don't have a game already
+        //also remotePlayer != localPlayer
+
+        this.context = context;
+        this.localPlayer = Player.get();
+        this.remotePlayer = remotePlayer;
+        this.id = id;
+
+
+        for (DatabaseGame currGame : Player.get().getGameList()) {
+            if (this.id.equals(currGame.getGameId())) {
+                databaseGame = currGame;
+                break;
+            }
+        }
+        createBoard();
+    }
+
+    private void initializeGameToDatabase() {
+        this.id = UUID.randomUUID().toString();
 
         databaseGame = new DatabaseGame(id, Player.get().getUserId(), remotePlayer.getUserId(), board.getListFieldInts());
+        databaseGame.setHasPlayerRolledTheDice(false);
+        databaseGame.setIsPlayer1AdditionalActionNeeded(false);
+        databaseGame.setIsPlayer2AdditionalActionNeeded(false);
+        databaseGame.setPlayer1Position(0);
+        databaseGame.setPlayer1Turn(true);
+        databaseGame.setPlayer2Position(0);
+        databaseGame.setTextPlaceholder1(" ");
+        databaseGame.setTextPlaceholder2(" ");
+        databaseGame.setTextPlaceholder3(" ");
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("games").child(id).setValue(databaseGame);
+
         //for each game save the game id to both players and the other player's id, so we know who plays with whom.
         mDatabase.child("users").child(localPlayer.getUserId()).child("userGames").child(id).setValue(remotePlayer.getUserId());
         mDatabase.child("users").child(remotePlayer.getUserId()).child("userGames").child(id).setValue(localPlayer.getUserId());
-
     }
 
+//    private void initializeGameToDatabase() {
+//        this.id = UUID.randomUUID().toString();
+//
+//        databaseGame = new DatabaseGame(id, Player.get().getUserId(), remotePlayer.getUserId(), board.getListFieldInts());
+//
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        mDatabase.child("games").child(id).setValue(databaseGame);
+//        //for each game save the game id to both players and the other player's id, so we know who plays with whom.
+//        mDatabase.child("users").child(localPlayer.getUserId()).child("userGames").child(id).setValue(remotePlayer.getUserId());
+//        mDatabase.child("users").child(remotePlayer.getUserId()).child("userGames").child(id).setValue(localPlayer.getUserId());
+//
+//        this.databaseGame.setPlayer1Position(0);
+//        this.databaseGame.setPlayer2Position(0);
+//    }
 
-    private int play() {
-        //TODO play mechanics
-        return -1; // DELETE THIS
+    public boolean isItMyTurn() {
+        return (databaseGame.getPlayer1Id().equals(Player.get().getUserId()) && databaseGame.isPlayer1Turn() == true) ||
+                (databaseGame.getPlayer2Id().equals(Player.get().getUserId()) && databaseGame.isPlayer1Turn() == false);
+    }
+
+    public boolean amIPlayer1() {
+        return databaseGame.getPlayer1Id().equals(Player.get().getUserId());
+    }
+
+    public boolean amIRequestedAdditionalAction() {
+        return (amIPlayer1() == true && databaseGame.getIsPlayer1AdditionalActionNeeded() == true) || (amIPlayer1() == false && databaseGame.getIsPlayer2AdditionalActionNeeded() == true);
+    }
+
+    public boolean isRemotePlayerRequestedAdditionalAction() {
+        return (amIPlayer1() == true && databaseGame.getIsPlayer2AdditionalActionNeeded() == true) || (amIPlayer1() == false && databaseGame.getIsPlayer1AdditionalActionNeeded() == true);
+    }
+
+    public int retrieveToken(int id) {
+        switch (id) {
+            case 0:
+                return context.getResources().getIdentifier("befriendylogo", "drawable", context.getPackageName());
+        }
+        return 0;
     }
 
     public Board getBoard() {
@@ -54,36 +122,36 @@ public class Game implements Parcelable {
 
     private void createBoard() {
         //TODO CHANGE HERE
-        this.board = new Board();
-        board.addField(new Minigame(1, 1)); //3
-        board.addField(new Truth(2, 2)); //1
-        board.addField(new Dare(3, 3));//2
-        board.addField(new Minigame(4, 4));//3
-        board.addField(new Truth(5, 5));//1
-        board.addField(new Dare(6, 6));//2
-        board.addField(new Truth(7, 7));//1
-        board.addField(new Dare(8, 8));//2
-        board.addField(new Wildcard(9, 9));//4
-        board.addField(new Dare(10, 10));//2
-        board.addField(new Gameplay(11, 11));//5
-        board.addField(new Dare(12, 12));//2
-        board.addField(new Truth(13, 13));//1
-        board.addField(new Minigame(14, 14));//3
-        board.addField(new Dare(15, 15));//2
-        board.addField(new Gameplay(16, 16));//5
-        board.addField(new Wildcard(17, 17));//4
-        board.addField(new Truth(18, 18));//1
-        board.addField(new Dare(19, 19));//2
-        board.addField(new Truth(20, 20));//1
-        board.addField(new Wildcard(21, 21));//4
-        board.addField(new Minigame(22, 22));//3
-        board.addField(new Dare(23, 23));//2
-        board.addField(new Gameplay(24, 24));//5
-        board.addField(new Truth(25, 25));//1
-        board.addField(new Wildcard(26, 26));//4
-        board.addField(new Dare(27, 27));//2
-        board.addField(new Truth(28, 28));//1
-        board.addField(new Wildcard(29, 29));//4
+        this.board = new Board(databaseGame, context);
+        board.addField(new Minigame(1)); //3
+        board.addField(new Truth(2)); //1
+        board.addField(new Dare(3));//2
+        board.addField(new Minigame(4));//3
+        board.addField(new Truth(5));//1
+        board.addField(new Dare(6));//2
+        board.addField(new Truth(7));//1
+        board.addField(new Dare(8));//2
+        board.addField(new Wildcard(9));//4
+        board.addField(new Dare(10));//2
+        board.addField(new Gameplay(11));//5
+        board.addField(new Dare(12));//2
+        board.addField(new Truth(13));//1
+        board.addField(new Minigame(14));//3
+        board.addField(new Dare(15));//2
+        board.addField(new Gameplay(16));//5
+        board.addField(new Wildcard(17));//4
+        board.addField(new Truth(18));//1
+        board.addField(new Dare(19));//2
+        board.addField(new Truth(20));//1
+        board.addField(new Wildcard(21));//4
+        board.addField(new Minigame(22));//3
+        board.addField(new Dare(23));//2
+        board.addField(new Gameplay(24));//5
+        board.addField(new Truth(25));//1
+        board.addField(new Wildcard(26));//4
+        board.addField(new Dare(27));//2
+        board.addField(new Truth(28));//1
+        board.addField(new Wildcard(29));//4
 
         //LEGEND:
         /*
@@ -132,33 +200,7 @@ public class Game implements Parcelable {
         return id;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public DatabaseGame getDatabaseGame() {
+        return databaseGame;
     }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(databaseGame.getGameId());
-    }
-
-    // Parcelling part
-
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Game createFromParcel(Parcel in) {
-            return new Game(in);
-        }
-
-        public Game[] newArray(int size) {
-            return new Game[size];
-        }
-    };
-
-    /** recreate object from parcel */
-    public Game(Parcel in){
-        String retrievedGameId = in.readString();
-        //TODO Here the game data should be taken from the database and the game should be reconstructed
-    }
-
-
 }

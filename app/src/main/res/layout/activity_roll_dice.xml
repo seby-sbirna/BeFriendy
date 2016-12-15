@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_roll_dice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.RollDiceActivity">
+
+    <Button
+        android:id="@+id/button_roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/you_rolled_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_roll"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="108dp"
+        android:text="You rolled: "
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_roll"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="108dp"
+        android:text="Continue" />
+</RelativeLayout>

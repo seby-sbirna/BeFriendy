@@ -1,8 +1,5 @@
 package com.example.EssentialClasses;
 
-import android.provider.ContactsContract;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +12,7 @@ public class DatabaseUser {
     private String email;
     private String password;
     private String userId;
+    private int tokenId;
     private Map<String, String> userGames; //first string = game id, second string = player 2 id
 
     public DatabaseUser(){
@@ -50,6 +48,14 @@ public class DatabaseUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getTokenId() {
+        return tokenId;
+    }
+
+    public void setTokenId(int tokenId) {
+        this.tokenId = tokenId;
     }
 
     public Map<String, String> getUserGames() {

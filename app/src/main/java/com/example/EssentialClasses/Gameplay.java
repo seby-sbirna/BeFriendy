@@ -7,10 +7,10 @@ import com.example.R;
  */
 
 public class Gameplay extends Field {
-    private String magicText;
+    private String gameplayText;
 
-    public Gameplay(int id, int position) {
-        super(id, position);
+    public Gameplay(int position) {
+        super(position);
     }
 
     @Override
@@ -23,23 +23,17 @@ public class Gameplay extends Field {
         //TODO
     }
 
-    @Override
-    public boolean checkForNewDataInBackground(int id) {
-        //TODO
-        return false; //DELETE
-    }
-
     //TODO CHANGE THIS NAMES! No magic
-    public String getMagicText() {
-        return magicText;
+    public String getGameplayText() {
+        return gameplayText;
     }
 
-    public void setMagicText(String magicText) {
-        this.magicText = magicText;
+    public void setGameplayText(String gameplayText) {
+        this.gameplayText = gameplayText;
     }
 
     public int getType() {
-        return 3;
+        return 5;
     }
 
     public int getDrawableId() {

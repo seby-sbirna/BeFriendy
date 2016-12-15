@@ -2,9 +2,16 @@ package com.example.EssentialClasses;
 
 import android.util.Log;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -12,6 +19,8 @@ import java.util.UUID;
  */
 
 public class Player {
+    private static Player currPlayer;
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     private String userId;
     private String userName;
     private String firstName;
@@ -20,21 +29,14 @@ public class Player {
     private List<DatabaseGame> gameList;
     private boolean rememberCredentials;
     private List<Player> friendList;
-    private PlayToken token;
+    private int token;
     private Map<String, String> usergameListIds;
-
-
+    private long totalTruthCount;
+    private long totalDareCount;
+    private long totalMinigameCount;
+    private String dormantTruthQuestion;
+    private String dormantDareQuestion;
     private ArrayList<DatabaseUser> userList;
-
-    private static Player currPlayer;
-
-    //uses Singelton -> only 1 Player object possible;
-    public static Player get(){
-        if(currPlayer == null){
-            currPlayer = new Player();
-        }
-        return currPlayer;
-    }
 
     public Player(){
         userList = new ArrayList<DatabaseUser>();
@@ -44,8 +46,15 @@ public class Player {
     public Player(String firstName, String emailAddress) {
         this.firstName = firstName;
         this.emailAddress = emailAddress;
-        this.token = PlayToken.DEFAULT_TOKEN;
         this.userId = UUID.randomUUID().toString();
+    }
+
+    //uses Singleton -> only 1 Player object possible;
+    public static Player get() {
+        if (currPlayer == null) {
+            currPlayer = new Player();
+        }
+        return currPlayer;
     }
 
     public ArrayList<DatabaseUser> getUsers() {                         // get all Users
@@ -58,10 +67,6 @@ public class Player {
                 return u;
         }
         return null;
-    }
-
-    public void setUserId(String userId){
-        this.userId = userId;
     }
 
     public String getName() {
@@ -114,8 +119,8 @@ public class Player {
         this.gameList.add(game);
     }
 
-    public void removeGameToGameList(int id) {
-        this.gameList.remove(id);
+    public void removeGameFromGameList(int index) {
+        this.gameList.remove(index);
     }
 
     public boolean isRememberCredentials() {
@@ -138,13 +143,16 @@ public class Player {
         this.friendList.remove(friend);
     }
 
-    public PlayToken getToken() {
+    public int getTokenDrawableId() {
         return token;
     }
 
-    public void setToken(int shapeId, int colourId) {
-        this.token.setShape(shapeId);
-        this.token.setColor(colourId);
+    public void setToken(int id) {
+        this.token = id;
+    }
+
+    public void inviteFriend(String friendEmailAddress) {
+        //TODO !!!
     }
 
     //Hristo: i don't think this should be here
@@ -155,10 +163,6 @@ public class Player {
         return g;
     }
     */
-
-    public void inviteFriend(String friendEmailAddress){
-        //TODO !!!
-    }
 
     public void showFriendList() {
         //TODO !!!
@@ -177,11 +181,107 @@ public class Player {
         return userId;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public Map<String, String> getUsergameListIds() {
         return usergameListIds;
     }
 
     public void setUsergameListIds(Map<String, String> usergameListIds) {
         this.usergameListIds = usergameListIds;
+    }
+
+    public long getTotalTruthCount() {
+        return totalTruthCount;
+    }
+
+    public void setTotalTruthCount(long totalTruthCount) {
+        this.totalTruthCount = totalTruthCount;
+    }
+
+    public long getTotalDareCount() {
+        return totalDareCount;
+    }
+
+    public void setTotalDareCount(long totalDareCount) {
+        this.totalDareCount = totalDareCount;
+    }
+
+    public long getTotalMinigameCount() {
+        return totalMinigameCount;
+    }
+
+    public void setTotalMinigameCount(long totalMinigameCount) {
+        this.totalMinigameCount = totalMinigameCount;
+    }
+
+    public String getDormantTruthQuestion() {
+        return dormantTruthQuestion;
+    }
+
+    public String getDormantDareQuestion() {
+        return dormantDareQuestion;
+    }
+
+    public void retrieveNewDormantTruthQuestion() {
+        Random rng = new Random();
+        if (Player.get().getTotalTruthCount() > 0) {
+            int randomTruthIdResult = rng.nextInt((int) Player.get().getTotalTruthCount()) + 1;
+
+            mDatabase.child("Truth").child(String.valueOf(randomTruthIdResult)).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()) {
+                        return;
+                    }
+                    dormantTruthQuestion = String.valueOf(dataSnapshot.getValue());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    dormantTruthQuestion = null;
+                }
+            });
+        }
+    }
+
+    public void retrieveNewDormantDareQuestion() {
+        Random rng = new Random();
+        if (Player.get().getTotalDareCount() > 0) {
+            int randomDareIdResult = rng.nextInt((int) Player.get().getTotalDareCount()) + 1;
+
+            mDatabase.child("Dare").child(String.valueOf(randomDareIdResult)).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()) {
+                        return;
+                    }
+                    dormantDareQuestion = String.valueOf(dataSnapshot.getValue());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    dormantDareQuestion = null;
+                }
+            });
+        }
+    }
+
+    public void invalidateDormantTruthQuestion() {
+        dormantTruthQuestion = null;
+    }
+
+    public void invalidateDormantDareQuestion() {
+        dormantDareQuestion = null;
+    }
+
+    public boolean isDormantTruthQuestionInvalidated() {
+        return dormantTruthQuestion == null;
+    }
+
+    public boolean isDormantDareQuestionInvalidated() {
+        return dormantDareQuestion == null;
     }
 }

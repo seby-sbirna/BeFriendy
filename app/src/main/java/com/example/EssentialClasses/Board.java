@@ -1,5 +1,7 @@
 package com.example.EssentialClasses;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,18 +12,15 @@ import java.util.List;
 
 // THIS IS ME :3
 public class Board {
-    private int localPlayerPosition;
-    private int remotePlayerPosition;
-    private PlayToken localPlayerToken;
-    private PlayToken remotePlayerToken;
-    private boolean yourTurn;
+    private DatabaseGame databaseGame;
+    private Context context;
 
     private List<Field> fields =new ArrayList<>();
     private List<Integer> fieldsInt = new ArrayList<>();
 
-    public Board() {
-        localPlayerPosition = 0;
-        remotePlayerPosition = 0;
+    public Board(DatabaseGame databaseGame, Context context) {
+        this.databaseGame = databaseGame;
+        this.context = context;
     }
 
     public void addField(Field field) {
@@ -29,14 +28,14 @@ public class Board {
 
         //LEGEND:
         /*
-        Truth: 1
-        Dare: 2
-        Minigame: 3
-        Wildcard: 4
-        Gameplay: 5
+          Truth: 1
+          Dare: 2
+          Minigame: 3
+          Wildcard: 4
+          Gameplay: 5
          */
         String fieldName = field.getClass().getName();
-        switch (field.getClass().getName()){
+        switch (fieldName) {
             case "com.example.EssentialClasses.Truth":
                 fieldsInt.add(1);
                 break;
@@ -56,7 +55,6 @@ public class Board {
                 //unknown field
                 fieldsInt.add(-1);
                 break;
-
         }
 
     }
@@ -65,41 +63,16 @@ public class Board {
         return fieldsInt;
     }
 
-    public Field getFieldByPosition(int position) {
+    public Field getFieldByPositionOnTheBoard(int positionOnTheBoard) {
         for (Field field : fields) {
-            if(field.getPosition() == position) return field;
+            if (field.getPositionOnTheBoard() == positionOnTheBoard) return field;
         }
-        throw new IllegalArgumentException("The position " + position + " is not defined." );
+        throw new IllegalArgumentException("The positionOnTheBoard " + positionOnTheBoard + " is not defined.");
     }
 
-    public int getBoardFieldType(int index){
-        return fields.get(index).getType();
-    }
-
-    public int getLocalPlayerPosition() {
-        return localPlayerPosition;
-    }
-
-    public int getRemotePlayerPosition() {
-        return remotePlayerPosition;
-    }
-
-    private void setLocalPlayerPosition(int position) {
-        this.localPlayerPosition = position;
-    }
-
-    private void setRemotePlayerPosition(int position) {
-        this.remotePlayerPosition = position;
-    }
-
-
-    public void moveOnBoard(Player player, int steps) {
-        if (yourTurn) {
-            //TODO execute animations
-            setLocalPlayerPosition(localPlayerPosition + steps);
-        } else if (!yourTurn) {
-            //TODO execute animations
-            setRemotePlayerPosition(remotePlayerPosition + steps);
-        }
+    public int getBoardFieldTypeByPositionOnTheBoard(int positionOnTheBoard) {
+        if (positionOnTheBoard >= 1)
+            return fields.get(positionOnTheBoard - 1).getType();
+        return -1;
     }
 }

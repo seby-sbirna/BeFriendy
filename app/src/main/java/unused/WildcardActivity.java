@@ -1,8 +1,6 @@
-package com.example;
+package unused;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
+/*
 public class WildcardActivity extends AppCompatActivity {
 
     @Override
@@ -11,3 +9,4 @@ public class WildcardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wildcard);
     }
 }
+*/

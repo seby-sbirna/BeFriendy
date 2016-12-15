@@ -1,15 +1,6 @@
-package com.example;
+package unused;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
+/*
 public class DareActivity extends AppCompatActivity {
 
     public static final int CAMERA_REQUEST = 1;
@@ -61,18 +52,18 @@ public class DareActivity extends AppCompatActivity {
             }
         });
 
-        }
+    }
 
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-            if(resultCode == RESULT_OK) {
-                if(requestCode == CAMERA_REQUEST) {
-                    cameraImage = (Bitmap) data.getExtras().get("data");
-                    darePictureTaken.setImageBitmap(cameraImage);
-                }
+        if (resultCode == RESULT_OK) {
+            if (requestCode == CAMERA_REQUEST) {
+                cameraImage = (Bitmap) data.getExtras().get("data");
+                darePictureTaken.setImageBitmap(cameraImage);
             }
         }
     }
-
+}
+*/

@@ -60,12 +60,15 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 Player.get().getUsers().add(user);                 // add registered user in Reg.Users list
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
             }
+
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
             }
+
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
             }
@@ -84,14 +87,13 @@ public class RegistrationActivity extends AppCompatActivity {
                 String chosenPassword = regPassword.getText().toString();
                 String repeatChosenPassword = regRepeatPassword.getText().toString();
 
-                if(chosenUserName.isEmpty() || chosenEmail.isEmpty() || chosenPassword.isEmpty() || repeatChosenPassword.isEmpty()) {
+                if (chosenUserName.isEmpty() || chosenEmail.isEmpty() || chosenPassword.isEmpty() || repeatChosenPassword.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill in all the fields!", Toast.LENGTH_LONG).show();
-                } else if(! chosenPassword.equals(repeatChosenPassword)) {
-                    Toast.makeText(getApplicationContext(), "The passwords does not match!", Toast.LENGTH_LONG).show();
+                } else if (!chosenPassword.equals(repeatChosenPassword)) {
+                    Toast.makeText(getApplicationContext(), "The passwords does not match! Please input them again!", Toast.LENGTH_LONG).show();
                 }
                 // more if statements to validate registration...
                 else {
-
                     // Code to register user in Database goes here...
                     boolean userExists = false;
                     for (DatabaseUser currUser : Player.get().getUsers()) {
@@ -100,13 +102,19 @@ public class RegistrationActivity extends AppCompatActivity {
                             userExists = true;
                             break;
                         }
+                        if (chosenUserName.equals(currUser.getUserName())) {
+                            Toast.makeText(getApplicationContext(), "This username already exists", Toast.LENGTH_LONG).show();
+                            userExists = true;
+                            break;
+                        }
                     }
-                    if(!userExists){
+                    if (!userExists) {
                         newUser = new DatabaseUser();
                         newUser.setEmail(chosenEmail);
                         newUser.setUserName(chosenUserName);
                         newUser.setPassword(chosenPassword);
                         newUser.setUserId(UUID.randomUUID().toString());
+                        newUser.setTokenId(0);
                         mDatabase.child("users").child(newUser.getUserId()).setValue(newUser);
 
                         Player.get().setUserName(newUser.getUserName());
@@ -115,7 +123,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                         //Log.d("AUTH", Player.get().getUsers().contains());
                         Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), GameListActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                         finish(); //so the user can't go back;
                     }

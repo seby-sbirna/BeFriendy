@@ -5,31 +5,32 @@ package com.example.EssentialClasses;
  */
 
 public abstract class Field {
-    protected int id;
+    protected int databaseId;
     protected int position;
 
     public Field(){}
 
-    public Field(int id, int position) {
-        this.id = id;
+    public Field(int position) {
         this.position = position;
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     protected static void closeField() {
         //TODO Close the field
     }
 
+    public int getPositionOnTheBoard() {
+        return position;
+    }
+
     public abstract void execute();
 
     public abstract void visualize(String[] data);
 
-    public abstract boolean checkForNewDataInBackground(int id);
-
     public abstract int getType();
 
     public abstract int getDrawableId();
+
+    public void setDatabaseId(int databaseId) {
+        this.databaseId = databaseId;
+    }
 }

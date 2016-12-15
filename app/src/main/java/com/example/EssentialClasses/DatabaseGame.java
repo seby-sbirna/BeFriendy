@@ -34,6 +34,12 @@ public class DatabaseGame {
     private boolean isPlayer1Turn;
     private ArrayList<String> usedTruthsId;
     private ArrayList<String> usedDaresId;
+    private boolean hasPlayerRolledTheDice;
+    private boolean isPlayer1AdditionalActionNeeded;
+    private boolean isPlayer2AdditionalActionNeeded;
+    private String textPlaceholder1;
+    private String textPlaceholder2;
+    private String textPlaceholder3;
 
     public DatabaseGame (){
         //empty constructor for firebase
@@ -49,7 +55,12 @@ public class DatabaseGame {
         this.isPlayer1Turn = true;
         this.usedTruthsId = new ArrayList<>();
         this.usedDaresId =new ArrayList<>();
-
+        this.hasPlayerRolledTheDice = false;
+        this.isPlayer1AdditionalActionNeeded = false;
+        this.isPlayer2AdditionalActionNeeded = false;
+        this.textPlaceholder1 = "";
+        this.textPlaceholder2 = "";
+        this.textPlaceholder3 = "";
         //when a new Game is created it should be saved in the database
 
     }
@@ -60,6 +71,30 @@ public class DatabaseGame {
 
     public void setGameId(String gameId) {
         this.gameId = gameId;
+    }
+
+    public boolean getHasPlayerRolledTheDice() {
+        return this.hasPlayerRolledTheDice;
+    }
+
+    public void setHasPlayerRolledTheDice(boolean hasPlayerRolledTheDice) {
+        this.hasPlayerRolledTheDice = hasPlayerRolledTheDice;
+    }
+
+    public boolean getIsPlayer1AdditionalActionNeeded() {
+        return this.isPlayer1AdditionalActionNeeded;
+    }
+
+    public void setIsPlayer1AdditionalActionNeeded(boolean isPlayer1AdditionalActionNeeded) {
+        this.isPlayer1AdditionalActionNeeded = isPlayer1AdditionalActionNeeded;
+    }
+
+    public boolean getIsPlayer2AdditionalActionNeeded() {
+        return this.isPlayer2AdditionalActionNeeded;
+    }
+
+    public void setIsPlayer2AdditionalActionNeeded(boolean isPlayer2AdditionalActionNeeded) {
+        this.isPlayer2AdditionalActionNeeded = isPlayer2AdditionalActionNeeded;
     }
 
     public String getPlayer1Id() {
@@ -108,6 +143,30 @@ public class DatabaseGame {
 
     public void setPlayer1Turn(boolean player1Turn) {
         isPlayer1Turn = player1Turn;
+    }
+
+    public String getTextPlaceholder1() {
+        return textPlaceholder1;
+    }
+
+    public void setTextPlaceholder1(String textPlaceholder1) {
+        this.textPlaceholder1 = textPlaceholder1;
+    }
+
+    public String getTextPlaceholder2() {
+        return textPlaceholder2;
+    }
+
+    public void setTextPlaceholder2(String textPlaceholder2) {
+        this.textPlaceholder2 = textPlaceholder2;
+    }
+
+    public String getTextPlaceholder3() {
+        return textPlaceholder3;
+    }
+
+    public void setTextPlaceholder3(String textPlaceholder3) {
+        this.textPlaceholder3 = textPlaceholder3;
     }
 
     public ArrayList<String> getUsedTruthsId() {

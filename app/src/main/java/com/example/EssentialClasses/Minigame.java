@@ -10,8 +10,8 @@ public class Minigame extends Field {
     private String minigameText;
     private String answer;
 
-    public Minigame(int id, int position) {
-        super(id, position);
+    public Minigame(int position) {
+        super(position);
     }
 
     @Override
@@ -26,12 +26,6 @@ public class Minigame extends Field {
 
     private void requestMinigameFromDatabase() {
         //TODO
-    }
-
-    @Override
-    public boolean checkForNewDataInBackground(int id) {
-        //TODO
-        return false; //DELETE
     }
 
     public String getMinigameText() {
@@ -51,7 +45,7 @@ public class Minigame extends Field {
     }
 
     public int getType() {
-        return 4;
+        return 3;
     }
 
     public int getDrawableId() {

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "464041488221-o2p8k1fsci0pf6e6i2oealkd8418n32k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.xps.xps.befriendyseby",
+            "certificate_hash": "B96B31525DF27359013C89B9E4FD2DDB0303956E"
+          }
+        },
+        {
           "client_id": "464041488221-tbqqf0v676tn9jhsvcsq628lkp1a19od.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464041488221-tbqqf0v676tn9jhsvcsq628lkp1a19od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

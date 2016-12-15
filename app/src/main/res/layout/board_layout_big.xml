@@ -9,6 +9,7 @@
     tools:context=".GameActivity">
 
     <ScrollView
+        android:id="@+id/snake_view_place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/line">
@@ -34,6 +35,7 @@
                         android:id="@+id/field_27"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -41,6 +43,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="27"
                         android:textColor="#ffffff"
@@ -48,16 +51,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_27_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_27_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -70,6 +75,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -77,6 +83,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="28"
                         android:textColor="#ffffff"
@@ -84,16 +91,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_28_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_28_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -105,6 +114,7 @@
                         android:id="@+id/field_29"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:clickable="true"
                         android:src="@drawable/wildcard" />
 
                     <TextView
@@ -112,6 +122,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="29"
                         android:textColor="#ffffff"
@@ -119,16 +130,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_29_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_29_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -139,6 +152,7 @@
                         android:id="@+id/field_finish"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:clickable="true"
                         android:src="@drawable/finish" />
 
                     <TextView
@@ -146,6 +160,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text=""
                         android:textColor="#ffffff"
@@ -153,16 +168,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_finish_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_finish_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -183,6 +200,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/wildcard" />
 
                     <TextView
@@ -190,6 +208,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="26"
                         android:textColor="#ffffff"
@@ -197,16 +216,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_26_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_26_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -228,6 +249,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -235,6 +257,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="25"
                         android:textColor="#ffffff"
@@ -242,16 +265,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_25_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_25_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -264,6 +289,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/gameplay" />
 
                     <TextView
@@ -271,6 +297,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="24"
                         android:textColor="#ffffff"
@@ -278,16 +305,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_24_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_24_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -300,6 +329,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -307,6 +337,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="23"
                         android:textColor="#ffffff"
@@ -314,16 +345,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_23_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_23_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -345,6 +378,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/minigame" />
 
                     <TextView
@@ -352,6 +386,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="22"
                         android:textColor="#ffffff"
@@ -359,16 +394,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_22_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_22_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -390,6 +427,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -397,6 +435,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="20"
                         android:textColor="#ffffff"
@@ -404,16 +443,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_20_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_20_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -425,6 +466,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/wildcard" />
 
                     <TextView
@@ -432,6 +474,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="21"
                         android:textColor="#ffffff"
@@ -439,16 +482,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_21_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_21_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -470,6 +515,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -477,6 +523,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="19"
                         android:textColor="#ffffff"
@@ -484,16 +531,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_19_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_19_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
 
@@ -516,6 +565,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -523,6 +573,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="18"
                         android:textColor="#ffffff"
@@ -530,16 +581,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_18_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_18_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
 
@@ -562,6 +615,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/wildcard" />
 
                     <TextView
@@ -569,6 +623,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="17"
                         android:textColor="#ffffff"
@@ -576,16 +631,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_17_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_17_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -607,6 +664,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/gameplay" />
 
                     <TextView
@@ -614,6 +672,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="16"
                         android:textColor="#ffffff"
@@ -621,16 +680,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_16_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_16_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -643,6 +704,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -650,6 +712,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="15"
                         android:textColor="#ffffff"
@@ -657,16 +720,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_15_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_15_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -679,6 +744,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/minigame" />
 
                     <TextView
@@ -686,6 +752,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="14"
                         android:textColor="#ffffff"
@@ -693,16 +760,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_14_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_14_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -724,6 +793,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -732,6 +802,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="13"
                         android:textColor="#ffffff"
@@ -739,16 +810,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_13_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_13_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -770,6 +843,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -777,6 +851,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="12"
                         android:textColor="#ffffff"
@@ -784,16 +859,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_12_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_12_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -815,6 +892,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/wildcard" />
 
                     <TextView
@@ -822,6 +900,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="9"
                         android:textColor="#ffffff"
@@ -829,16 +908,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_9_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_9_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -851,6 +932,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -858,6 +940,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="10"
                         android:textColor="#ffffff"
@@ -865,16 +948,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_10_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_10_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -887,6 +972,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/gameplay" />
 
                     <TextView
@@ -894,6 +980,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="11"
                         android:textColor="#ffffff"
@@ -901,16 +988,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_11_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_11_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -931,6 +1020,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -938,6 +1028,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="8"
                         android:textColor="#ffffff"
@@ -945,16 +1036,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_8_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_8_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -976,6 +1069,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -983,6 +1077,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="7"
                         android:textColor="#ffffff"
@@ -990,16 +1085,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_7_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_7_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -1012,6 +1109,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -1019,6 +1117,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="6"
                         android:textColor="#ffffff"
@@ -1026,16 +1125,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_6_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_6_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -1048,6 +1149,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -1055,6 +1157,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="5"
                         android:textColor="#ffffff"
@@ -1062,16 +1165,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_5_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_5_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -1093,6 +1198,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/minigame" />
 
                     <TextView
@@ -1100,6 +1206,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="4"
                         android:textColor="#ffffff"
@@ -1107,16 +1214,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_4_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_4_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -1137,6 +1246,7 @@
                         android:id="@+id/field_start"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:clickable="true"
                         android:src="@drawable/start" />
 
                     <TextView
@@ -1144,6 +1254,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text=""
                         android:textColor="#ffffff"
@@ -1151,16 +1262,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_start_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_start_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -1173,6 +1286,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/minigame" />
 
                     <TextView
@@ -1180,6 +1294,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="1"
                         android:textColor="#ffffff"
@@ -1187,16 +1302,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_1_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_1_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -1209,6 +1326,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/truth" />
 
                     <TextView
@@ -1216,6 +1334,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="2"
                         android:textColor="#ffffff"
@@ -1223,16 +1342,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_2_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_2_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -1245,6 +1366,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_marginRight="32dp"
+                        android:clickable="true"
                         android:src="@drawable/dare" />
 
                     <TextView
@@ -1252,6 +1374,7 @@
                         android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="1dp"
+                        android:clickable="false"
                         android:gravity="center"
                         android:text="3"
                         android:textColor="#ffffff"
@@ -1259,16 +1382,18 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/field_3_player1"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="top|left"
-                        android:visibility="gone" />
+                        android:clickable="false" />
 
                     <ImageView
+                        android:id="@+id/field_3_player2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom|right"
-                        android:visibility="gone" />
+                        android:clickable="false" />
                 </FrameLayout>
 
             </LinearLayout>

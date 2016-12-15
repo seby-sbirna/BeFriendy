@@ -1,4 +1,5 @@
-package com.example;
+/*
+package unused;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.GameActivity;
+import com.example.R;
 
 public class TruthActivity extends AppCompatActivity {
 
@@ -55,3 +59,4 @@ public class TruthActivity extends AppCompatActivity {
         });
     }
 }
+*/
