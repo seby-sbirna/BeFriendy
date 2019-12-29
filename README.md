@@ -1,6 +1,7 @@
 # BeFriendy - Android-based social game application for enhancing human relationships
 ## Problem Formulation: 
-___"How can we develop a user friendly application that can run connected on many mobile phones simultaneously, that allows friends and partners to easily interact with each other on a daily basis?"___
+
+### ___"How can we develop a user friendly application that can run connected on many mobile phones simultaneously, that allows friends and partners to easily interact with each other on a daily basis?"___
 
 ---
 
